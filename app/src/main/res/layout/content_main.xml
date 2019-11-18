@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
-        android:id="@+id/toolbarInfo"
+        android:id="@+id/task_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -19,13 +19,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/TaskInput"
+        app:layout_constraintBottom_toTopOf="@id/task_text_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuBar"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/menu_bar"></LinearLayout>
 
     <EditText
-        android:id="@+id/TaskInput"
+        android:id="@+id/task_text_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
-        android:id="@+id/MenuBar"
+        android:id="@+id/menu_bar"
         android:layout_width="409dp"
         android:layout_height="50dp"
         android:layout_marginStart="1dp"
@@ -55,14 +55,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/TasksLabeled"
+            android:id="@+id/tasks_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Tasks" />
 
         <TextView
-            android:id="@+id/completeCheck"
+            android:id="@+id/completion_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

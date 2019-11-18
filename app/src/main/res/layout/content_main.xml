@@ -35,7 +35,7 @@
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter Task"
+        android:text="@string/input_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -59,14 +59,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tasks" />
+            android:text="@string/tasks_label" />
 
         <TextView
             android:id="@+id/completion_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Completed" />
+            android:text="@string/completion_label" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

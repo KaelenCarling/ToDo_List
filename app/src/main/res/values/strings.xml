@@ -4,4 +4,6 @@
     <string name="input_text">Enter Task</string>
     <string name="tasks_label">Tasks</string>
     <string name="completion_label">Completed</string>
+    <string name="quick_add_button">quick add button</string>
+    <string name="quick_add_text">quick add text</string>
 </resources>

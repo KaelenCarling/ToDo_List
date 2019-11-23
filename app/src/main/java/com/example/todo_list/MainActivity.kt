@@ -5,6 +5,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -16,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        quick_add_button.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+        // Quick add button listener
+        quick_add_button.setOnClickListener { quickAddButtonHandler() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -36,5 +35,18 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    // Quick add button handler
+    private fun quickAddButtonHandler() {
+        val task_text = task_text_input.text.toString()
+        if (task_text != "") addTask(task_text)
+    }
+
+    // Add a task
+    private fun addTask(label: String) {
+        val view = TextView(this)
+        view.text = label
+        task_list.addView(view)
     }
 }

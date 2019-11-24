@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: TaskViewModel
 
-    //private var taskItems: Array<TaskItem?>? = (null)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -57,22 +55,6 @@ class MainActivity : AppCompatActivity() {
         if (task_text != "") viewModel.addTask(task_text)
     }
 
-    // Add a task
-    /*private fun addTask(label: String) {
-        if (label != "") {
-            val taskItem = TaskItem(label)
-
-            // Create a new array to add the item then reassign the taskItems member array
-            val newArray: Array<TaskItem?> = arrayOfNulls<TaskItem>(taskItems?.size?.plus(1) ?: 1)
-            for (index: Int in 0..newArray.size - 2) {
-                newArray.set(index, taskItems!!.get(index))
-            }
-            newArray.set(newArray.size - 1, taskItem)
-            taskItems = newArray
-
-            updateDisplay()
-        }
-    }*/
 
     // Update the display of each task item
     private fun updateDisplay(taskItems: Array<TaskItem?>?) {

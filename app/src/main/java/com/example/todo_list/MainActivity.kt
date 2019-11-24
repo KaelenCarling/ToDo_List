@@ -4,22 +4,35 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.todo_list.util.TaskItem
+import com.example.todo_list.viewModel.TaskViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var taskItems: Array<TaskItem?>? = (null)
+    private lateinit var viewModel: TaskViewModel
+
+    //private var taskItems: Array<TaskItem?>? = (null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        viewModel = ViewModelProviders.of(this)
+            .get(TaskViewModel::class.java)
+        viewModel.taskItems.observe(this, Observer {
+            updateDisplay(it)
+        })
+
         // Quick add button listener
         quick_add_button.setOnClickListener { quickAddButtonHandler() }
+
+        updateDisplay(null)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,11 +54,11 @@ class MainActivity : AppCompatActivity() {
     // Quick add button handler
     private fun quickAddButtonHandler() {
         val task_text = task_text_input.text.toString()
-        if (task_text != "") addTask(task_text)
+        if (task_text != "") viewModel.addTask(task_text)
     }
 
     // Add a task
-    private fun addTask(label: String) {
+    /*private fun addTask(label: String) {
         if (label != "") {
             val taskItem = TaskItem(label)
 
@@ -59,17 +72,17 @@ class MainActivity : AppCompatActivity() {
 
             updateDisplay()
         }
-    }
+    }*/
 
     // Update the display of each task item
-    private fun updateDisplay() {
+    private fun updateDisplay(taskItems: Array<TaskItem?>?) {
         // Remove any current views and replace with new ones
         task_list.removeAllViews()
 
         // Replace each task item in task_list with the updated content stored in the array
         if (taskItems != null) {
-            for (index: Int in 0..taskItems!!.size - 1) {
-                task_list.addView(taskItems!!.get(index)!!.makeTask(this))
+            for (index: Int in 0..taskItems.size - 1) {
+                task_list.addView(taskItems.get(index)!!.makeTask(this))
             }
         }
     }

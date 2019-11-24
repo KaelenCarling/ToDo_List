@@ -1,11 +1,10 @@
 package com.example.todo_list
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
+import com.example.todo_list.util.TaskItem
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -45,8 +44,16 @@ class MainActivity : AppCompatActivity() {
 
     // Add a task
     private fun addTask(label: String) {
-        val view = TextView(this)
-        view.text = label
-        task_list.addView(view)
+        if (label != "") {
+            val taskItem = TaskItem(label)
+            task_list.addView(taskItem.makeTask(this))
+
+            updateDisplay()
+        }
+    }
+
+    // Update the display of each task item
+    private fun updateDisplay() {
+        //TODO
     }
 }

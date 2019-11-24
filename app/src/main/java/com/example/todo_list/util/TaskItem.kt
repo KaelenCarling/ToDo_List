@@ -10,7 +10,6 @@ import android.widget.TextView
 class TaskItem constructor(){
 
     private var task_text: String? = null
-    private var task_image: Image? = null       // not yet implemented
     private var completed: Boolean = false
 
     constructor(text: String): this() {

@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var taskItems: Array<TaskItem?>? = (null)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,7 +48,14 @@ class MainActivity : AppCompatActivity() {
     private fun addTask(label: String) {
         if (label != "") {
             val taskItem = TaskItem(label)
-            task_list.addView(taskItem.makeTask(this))
+
+            // Create a new array to add the item then reassign the taskItems member array
+            val newArray: Array<TaskItem?> = arrayOfNulls<TaskItem>(taskItems?.size?.plus(1) ?: 1)
+            for (index: Int in 0..newArray.size - 2) {
+                newArray.set(index, taskItems!!.get(index))
+            }
+            newArray.set(newArray.size - 1, taskItem)
+            taskItems = newArray
 
             updateDisplay()
         }
@@ -54,6 +63,14 @@ class MainActivity : AppCompatActivity() {
 
     // Update the display of each task item
     private fun updateDisplay() {
-        //TODO
+        // Remove any current views and replace with new ones
+        task_list.removeAllViews()
+
+        // Replace each task item in task_list with the updated content stored in the array
+        if (taskItems != null) {
+            for (index: Int in 0..taskItems!!.size - 1) {
+                task_list.addView(taskItems!!.get(index)!!.makeTask(this))
+            }
+        }
     }
 }

@@ -63,8 +63,8 @@ class TaskViewModel(app: Application): AndroidViewModel(app) {
         val set_completed_to_default = isPastMidnight()
         var is_completed = false
 
-        if (saved_tasks != "") {
-            val tasks = saved_tasks!!.split(DELIMITER)
+        if (saved_tasks != null && saved_tasks != "") {
+            val tasks = saved_tasks.split(DELIMITER)
             var index: Int
             for (index in tasks.indices step 2) {
                 if (!set_completed_to_default) {

@@ -1,7 +1,6 @@
 package com.example.todo_list.util
 
 import android.content.Context
-import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView

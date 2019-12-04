@@ -4,9 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.inputmethod.EditorInfo
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.todo_list.util.FileOperations
@@ -55,15 +52,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item?.itemId == R.id.action_save_list) {
+        if (item.itemId == R.id.action_save_list) {
             viewModel.saveTasks()
             return true
         }
-        if (item?.itemId == R.id.action_delete_list) {
+        if (item.itemId == R.id.action_delete_list) {
             viewModel.deleteAllTasks()
             return true
         }
-        if (item?.itemId == R.id.action_credits) {
+        if (item.itemId == R.id.action_credits) {
             CreditsActivity.start(this)
             return true
         }

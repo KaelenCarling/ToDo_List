@@ -1,7 +1,6 @@
 package com.example.todo_list.util
 
 import android.content.Context
-import android.media.Image
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -14,6 +13,11 @@ class TaskItem constructor(){
 
     constructor(text: String): this() {
         task_text = text
+    }
+
+    constructor(text: String, complete: Boolean): this() {
+        task_text = text
+        completed = complete
     }
 
     // Context is passed in from MainActivity
@@ -41,6 +45,14 @@ class TaskItem constructor(){
 
     fun setCompleted(value: Boolean) {
         completed = value
+    }
+
+    fun getTaskText(): String {
+        return task_text ?: ""
+    }
+
+    fun setTaskText(text: String) {
+        task_text = text
     }
 
 }

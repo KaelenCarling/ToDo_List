@@ -29,11 +29,6 @@ class MainActivity : AppCompatActivity() {
             updateDisplay(it)
         })
 
-        // Reset tasks to incomplete if it's a new day
-        if (isPastMidnight()) {
-            //TODO
-        }
-
         // Quick add button listener
         quick_add_button.setOnClickListener { quickAddButtonHandler() }
 
@@ -69,19 +64,6 @@ class MainActivity : AppCompatActivity() {
         val task_text = task_text_input.text.toString()
         if (task_text != "") viewModel.addTask(task_text)
     }
-
-    // Find out if it is a new day
-    private fun isPastMidnight(): Boolean {
-        // 1. Convert saved data to a Calendar object
-        var saved_calendar = Calendar.getInstance()
-        val saved_time = FileOperations.readDataFromFile(this.application, DATE_FILENAME)?.toLong() ?: Long.MAX_VALUE
-        saved_calendar.timeInMillis = saved_time
-
-        // 2. If right now is the next day, return true; else return false
-        val right_now = Calendar.getInstance()
-        return right_now.get(Calendar.DAY_OF_YEAR) > saved_calendar.get(Calendar.DAY_OF_YEAR)
-    }
-
 
     // Update the display of each task item
     private fun updateDisplay(taskItems: Array<TaskItem?>?) {

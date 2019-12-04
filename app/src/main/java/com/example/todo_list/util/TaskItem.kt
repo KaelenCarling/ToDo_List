@@ -1,6 +1,7 @@
 package com.example.todo_list.util
 
 import android.content.Context
+import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -32,6 +33,10 @@ class TaskItem constructor(){
         checkBox.setOnCheckedChangeListener{
             buttonView, isChecked -> setCompleted(checkBox.isChecked)
         }
+
+        // Adjust the layout so that the text takes most of the width and the checkbox is at the end
+        val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 4.toFloat())
+        textView.setLayoutParams(layoutParams)
 
         task_layout.addView(textView)
         task_layout.addView(checkBox)

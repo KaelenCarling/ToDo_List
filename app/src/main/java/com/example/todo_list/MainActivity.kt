@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.todo_list.util.FileOperations
@@ -70,7 +73,11 @@ class MainActivity : AppCompatActivity() {
     // Quick add button handler
     private fun quickAddButtonHandler() {
         val task_text = task_text_input.text.toString()
-        if (task_text != "") viewModel.addTask(task_text)
+        if (task_text != "") {
+            viewModel.addTask(task_text)
+            task_text_input.text!!.clear()
+            task_text_input.clearFocus()
+        }
     }
 
     // Update the display of each task item

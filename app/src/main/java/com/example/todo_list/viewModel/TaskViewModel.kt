@@ -52,6 +52,12 @@ class TaskViewModel(app: Application): AndroidViewModel(app) {
         return right_now.get(Calendar.DAY_OF_YEAR) > saved_calendar.get(Calendar.DAY_OF_YEAR)
     }
 
+    fun deleteAllTasks() {
+        val newArray: Array<TaskItem?> = arrayOfNulls<TaskItem>(0)
+        taskItems.value = newArray
+        saveTasks()
+    }
+
     fun loadTasks() {
         val saved_tasks = FileOperations.readDataFromFile(context, TASKS_FILENAME)
         val set_completed_to_default = isPastMidnight()

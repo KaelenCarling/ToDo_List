@@ -5,6 +5,11 @@
     <string name="completion_label">Completed</string>
     <string name="quick_add_button">quick add button</string>
     <string name="quick_add_text">quick add text</string>
-    <string name="default_list">Default List</string>
-    <string name="action_edit_list">Edit List</string>
+    <string name="action_reset_list">Reset List</string>
+    <string name="save_list_menu">Save List</string>
+    <string name="delete_list_menu">Delete List</string>
+    <string name="credits_menu">Credits</string>
+    <string name="kaelen_carling">Kaelen Carling\nkmc823@nau.edu</string>
+    <string name="seth_borkovec">Seth Borkovec\nstb224@nau.edu</string>
+    <string name="github_link"><u>https://github.com/KaelenCarling/ToDo_List</u></string>
 </resources>

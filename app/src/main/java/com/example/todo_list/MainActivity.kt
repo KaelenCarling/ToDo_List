@@ -52,8 +52,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item?.itemId == R.id.action_edit_list) {
-            LoadDeleteActivity.start(this)
+        if (item?.itemId == R.id.action_save_list) {
+            viewModel.saveTasks()
+            return true
+        }
+        if (item?.itemId == R.id.action_delete_list) {
+            viewModel.deleteAllTasks()
+            return true
+        }
+        if (item?.itemId == R.id.action_credits) {
+            CreditsActivity.start(this)
             return true
         }
         return super.onOptionsItemSelected(item)
